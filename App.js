@@ -1,41 +1,40 @@
-import React, { useState } from "react";
-import {LoginScreen} from "./Screens/auth/LoginScreen";
-import {RegistrationScreen} from "./Screens/auth/RegistrationScreen";
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from 'react';
+import { LoginScreen } from './Screens/auth/LoginScreen';
+import { RegistrationScreen } from './Screens/auth/RegistrationScreen';
+import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   ImageBackground,
   View,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
 } from 'react-native';
 
+const imageBg = require('./Source/Photo_BG.png');
 
-const  imageBg=require('./Source/Photo_BG.png')
-
-export default function App() { 
+export default function App() {
   const [activeScreen, setActiveScreen] = useState(0);
 
-  const changeScreen = (value) => { 
-    setActiveScreen(value)
-  }
-
+  const changeScreen = (value) => {
+    setActiveScreen(value);
+  };
 
   return (
-    <TouchableWithoutFeedback onPress={ Keyboard.dismiss}>
-      <View style={s.container }>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={s.container}>
         <ImageBackground source={imageBg} style={s.imageBg}>
-
-          {activeScreen === 0 ?
-            < RegistrationScreen changeScreen={changeScreen} /> :
-            <LoginScreen changeScreen={ changeScreen} />}
-
+          {activeScreen === 0 ? (
+            <RegistrationScreen
+              changeScreen={changeScreen}
+            />
+          ) : (
+            <LoginScreen changeScreen={changeScreen} />
+          )}
         </ImageBackground>
-        <StatusBar  style="auto"/>
+        <StatusBar style='auto' />
       </View>
-
     </TouchableWithoutFeedback>
-  )
+  );
 }
 
 const s = StyleSheet.create({
